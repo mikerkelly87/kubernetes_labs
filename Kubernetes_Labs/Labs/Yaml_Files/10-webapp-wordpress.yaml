@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-wordpress
+  labels:
+    app: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: webapp
+        tier: frontend
+    spec:
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+          items:
+          - key: config
+            path: site.conf
+      - name: wordpress-data
+        persistentVolumeClaim:
+          claimName: wordpress-pvc
+
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+        - name: wordpress-data
+          mountPath: /code
+      - name: php-fpm
+        image: mikerkelly87/php-fpm-ubuntu:latest
+        volumeMounts:
+        - name: wordpress-data
+          mountPath: /code
+        command: ['sh', '-c', 'php-fpm7.4 -F -R']

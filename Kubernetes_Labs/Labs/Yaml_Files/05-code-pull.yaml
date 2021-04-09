@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: code-pull
+spec:
+  volumes:
+  - name: wordpress-config
+    configMap:
+      name: wordpress-config
+      items:
+      - key: config
+        path: wp-config.php
+  - name: wordpress-data
+    persistentVolumeClaim:
+      claimName: wordpress-pvc
+
+  containers:
+  - name: code-pull
+    image: mikerkelly87/downloader
+    volumeMounts:
+    - name: wordpress-data
+      mountPath: /code
+    - name: wordpress-config
+      mountPath: /config
+    env:
+    - name: DB_NAME
+      valueFrom:
+        secretKeyRef:
+          name: wordpress-creds
+          key: DB_NAME
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: wordpress-creds
+          key: DB_USER
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: wordpress-creds
+          key: DB_PASSWORD
+    - name: DB_HOST
+      valueFrom:
+        secretKeyRef:
+          name: wordpress-creds
+          key: DB_HOST
+    command: ['sh', '-c', 'rm -rf /code/* && git clone https://github.com/mikerkelly87/kubernetes_labs.git &&cp -R kubernetes_labs/code/* /code/ && cp /config/wp-config.php /code/wp-config.php && sed -i s/\$DB_NAME/$DB_NAME/ /code/wp-config.php && sed -i s/\$DB_USER/$DB_USER/ /code/wp-config.php && sed -i s/\$DB_PASSWORD/$DB_PASSWORD/ /code/wp-config.php && sed -i s/\$DB_HOST/$DB_HOST/ /code/wp-config.php']
+  restartPolicy: Never

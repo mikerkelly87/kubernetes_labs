@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wordpress-creds
+type: Opaque
+data:
+  DB_NAME: d29yZHByZXNz
+  DB_USER: d29yZHByZXNzX3VzZXI=
+  DB_PASSWORD: cGFzc3dvcmQxMjM=
+  DB_HOST: bXlzcWw=
