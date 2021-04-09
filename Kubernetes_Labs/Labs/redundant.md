@@ -11,17 +11,17 @@ mkdir -p ~/apps/redundant_pod
 ```
 
 **There is a little more going on with this deployment which means more yaml files.**
-**These yaml files exist premade and can be downloaded from here:**
-[01-web-service.yaml](./Yaml_Files/01-web-service.yaml)
-[02-wordpress-config.yaml](./Yaml_Files/02-wordpress-config.yaml)
-[03-wordpress-pvc.yaml](./Yaml_Files/03-wordpress-pvc.yaml)
-[04-wordpress-creds.yaml](./Yaml_Files/04-wordpress-creds.yaml)
-[05-code-pull.yaml](./Yaml_Files/05-code-pull.yaml)
-[06-mysql-pvc.yaml](./Yaml_Files/06-mysql-pvc.yaml)
-[07-mysql-cred.yaml](./Yaml_Files/07-mysql-cred.yaml)
-[08-mysql-deployment.yaml](./Yaml_Files/08-mysql-deployment.yaml)
-[09-nginx-config.yaml](./Yaml_Files/09-nginx-config.yaml)
-[10-webapp-wordpress.yaml](./Yaml_Files/10-webapp-wordpress.yaml)
+**These yaml files exist premade and can be downloaded from here:**  
+[01-web-service.yaml](./Yaml_Files/01-web-service.yaml)  
+[02-wordpress-config.yaml](./Yaml_Files/02-wordpress-config.yaml)  
+[03-wordpress-pvc.yaml](./Yaml_Files/03-wordpress-pvc.yaml)  
+[04-wordpress-creds.yaml](./Yaml_Files/04-wordpress-creds.yaml)  
+[05-code-pull.yaml](./Yaml_Files/05-code-pull.yaml)  
+[06-mysql-pvc.yaml](./Yaml_Files/06-mysql-pvc.yaml)  
+[07-mysql-cred.yaml](./Yaml_Files/07-mysql-cred.yaml)  
+[08-mysql-deployment.yaml](./Yaml_Files/08-mysql-deployment.yaml)  
+[09-nginx-config.yaml](./Yaml_Files/09-nginx-config.yaml)  
+[10-webapp-wordpress.yaml](./Yaml_Files/10-webapp-wordpress.yaml)  
   
 **Place all these yaml files in `apps/redundant_pod/`**
   
@@ -145,5 +145,5 @@ kubectl delete service web-service
 kubectl delete service mysql
 ```
   
-[<-- Back to Labs](../README.md)
+[<-- Back to Labs](../README.md)  
 [<-- Back to Main](../../README.md)
