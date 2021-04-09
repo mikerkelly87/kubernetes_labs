@@ -8,7 +8,7 @@ The purpose of this documentation is to get a Kubernetes cluster running in your
  [Packstack_Labs](https://github.com/mikerkelly87/packstack_labs)
   
 **Then you can follow the following guide to get your infrastructure up and running quickly using Terraform:**  
-[Kubernetes Instances for Kubernetes Using Terraform](Terraform/README.md)
+[Kubernetes Instances for Openstack Using Terraform](Terraform/README.md)
   
 **If you don't have an Openstack cloud you can just create the following 4 VMs in your preferred hypervisor:**  
   
